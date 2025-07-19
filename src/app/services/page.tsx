@@ -1,16 +1,26 @@
 'use client';
 
-import { useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import { Layout } from '@/components/layout/Layout';
 import { Card } from '@/components/ui/Card';
 import { Icon } from '@/components/ui/Icon';
 import { Button } from '@/components/ui/Button';
 import { servicePhases } from '@/data/dummy';
-import Link from 'next/link';
+
+// Visual images for each service phase
+const phaseImages = [
+  "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+];
 
 export default function ServicesPage() {
-  const [activeTab, setActiveTab] = useState(0);
-
   return (
     <Layout>
       {/* Hero Section */}
@@ -63,134 +73,193 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Service Phases */}
-      <section className="py-16 bg-white">
+      {/* Visual Timeline of Services */}
+      <section className="py-20 bg-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Desktop Tabs */}
-          <div className="hidden lg:block">
-            <div className="flex flex-wrap justify-center mb-8 border-b">
-              {servicePhases.map((phase, index) => (
-                <button
-                  key={phase.id}
-                  onClick={() => setActiveTab(index)}
-                  className={`px-4 py-3 text-sm font-medium transition-colors border-b-2 ${
-                    activeTab === index
-                      ? 'border-emerald-600 text-emerald-600'
-                      : 'border-transparent text-gray-600 hover:text-gray-900'
-                  }`}
-                >
-                  {phase.title}
-                </button>
-              ))}
-            </div>
-
-            <Card className="min-h-[400px]">
-              <div className="flex items-start space-x-6">
-                <div className="flex-shrink-0">
-                  <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center">
-                    <Icon name={servicePhases[activeTab].icon as any} size={32} className="text-emerald-600" />
-                  </div>
-                </div>
-                <div className="flex-grow">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                    {servicePhases[activeTab].title}
-                  </h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed">
-                    {servicePhases[activeTab].description}
-                  </p>
-                  <h4 className="text-lg font-semibold text-gray-900 mb-4">
-                    Key Responsibilities:
-                  </h4>
-                  <ul className="space-y-2 mb-8">
-                    {servicePhases[activeTab].responsibilities.map((responsibility, index) => (
-                      <li key={index} className="flex items-start">
-                        <div className="w-2 h-2 bg-emerald-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <span className="text-gray-600">{responsibility}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Link href="/contact">
-                    <Button variant="primary">
-                      Speak to a Project Manager
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            </Card>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Your Project Journey
+            </h2>
+            <p className="text-xl text-gray-600">
+              Eight comprehensive phases that transform your vision into reality
+            </p>
           </div>
 
-          {/* Mobile Accordion */}
-          <div className="lg:hidden space-y-4">
-            {servicePhases.map((phase, index) => (
-              <Card key={phase.id} className="overflow-hidden">
-                <button
-                  onClick={() => setActiveTab(activeTab === index ? -1 : index)}
-                  className="w-full flex items-center justify-between p-6 text-left"
-                >
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center">
-                      <Icon name={phase.icon as any} size={24} className="text-emerald-600" />
+          {/* Timeline */}
+          <div className="relative">
+            {/* Central Timeline Line */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-emerald-500 to-emerald-600 hidden lg:block"></div>
+
+            <div className="space-y-16">
+              {servicePhases.map((phase, index) => (
+                <div key={phase.id} className={`flex items-center ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} flex-col lg:space-x-16 space-y-8 lg:space-y-0`}>
+                  {/* Content Side */}
+                  <div className="flex-1 lg:max-w-lg">
+                    <Card className="relative overflow-hidden group hover:shadow-2xl transition-all duration-500">
+                      {/* Phase Number */}
+                      <div className="absolute top-4 right-4 w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                        {index + 1}
+                      </div>
+
+                      <div className="p-8">
+                        <div className="flex items-center mb-4">
+                          <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mr-4">
+                            <Icon name={phase.icon} size={24} className="text-emerald-600" />
+                          </div>
+                          <h3 className="text-2xl font-bold text-gray-900 group-hover:text-emerald-700 transition-colors">
+                            {phase.title}
+                          </h3>
+                        </div>
+
+                        <p className="text-gray-600 mb-6 leading-relaxed">
+                          {phase.description}
+                        </p>
+
+                        <div className="mb-6">
+                          <h4 className="text-lg font-semibold text-gray-900 mb-3">Key Responsibilities:</h4>
+                          <ul className="space-y-2">
+                            {phase.responsibilities.slice(0, 3).map((responsibility, respIndex) => (
+                              <li key={respIndex} className="flex items-start">
+                                <div className="w-2 h-2 bg-emerald-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                <span className="text-gray-600 text-sm">{responsibility}</span>
+                              </li>
+                            ))}
+                            {phase.responsibilities.length > 3 && (
+                              <li className="text-emerald-600 text-sm font-medium">
+                                +{phase.responsibilities.length - 3} more responsibilities
+                              </li>
+                            )}
+                          </ul>
+                        </div>
+
+                        <Button variant="outline" size="sm" className="group-hover:bg-emerald-50 group-hover:border-emerald-300">
+                          Learn More
+                        </Button>
+                      </div>
+                    </Card>
+                  </div>
+
+                  {/* Timeline Node (Desktop) */}
+                  <div className="hidden lg:flex w-16 h-16 bg-white border-4 border-emerald-500 rounded-full items-center justify-center shadow-lg z-10">
+                    <Icon name={phase.icon} size={24} className="text-emerald-600" />
+                  </div>
+
+                  {/* Visual Side */}
+                  <div className="flex-1 lg:max-w-lg">
+                    <div className="relative group">
+                      <div className="aspect-video rounded-2xl overflow-hidden shadow-lg group-hover:shadow-2xl transition-all duration-500">
+                        <Image
+                          src={phaseImages[index]}
+                          alt={`${phase.title} visualization`}
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-700"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      </div>
+                      
+                      {/* Floating Badge */}
+                      <div className="absolute -bottom-4 -right-4 bg-white rounded-xl shadow-lg p-3 border border-emerald-100">
+                        <div className="text-center">
+                          <div className="text-lg font-bold text-emerald-600">Phase {index + 1}</div>
+                          <div className="text-xs text-gray-600">of 8</div>
+                        </div>
+                      </div>
                     </div>
-                    <h3 className="text-lg font-semibold text-gray-900">
-                      {phase.title}
-                    </h3>
                   </div>
-                  <Icon 
-                    name={activeTab === index ? 'chevron-left' : 'chevron-right'} 
-                    size={20} 
-                    className="text-gray-400" 
-                  />
-                </button>
-                
-                {activeTab === index && (
-                  <div className="px-6 pb-6 border-t border-gray-100">
-                    <p className="text-gray-600 mb-4 leading-relaxed">
-                      {phase.description}
-                    </p>
-                    <h4 className="text-md font-semibold text-gray-900 mb-3">
-                      Key Responsibilities:
-                    </h4>
-                    <ul className="space-y-2 mb-6">
-                      {phase.responsibilities.map((responsibility, respIndex) => (
-                        <li key={respIndex} className="flex items-start">
-                          <div className="w-2 h-2 bg-emerald-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                          <span className="text-gray-600 text-sm">{responsibility}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <Link href="/contact">
-                      <Button variant="primary" size="sm">
-                        Speak to a Project Manager
-                      </Button>
-                    </Link>
-                  </div>
-                )}
-              </Card>
-            ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Process Benefits */}
+      <section className="py-20 bg-gradient-to-br from-emerald-50 to-amber-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Why Our Process Works
+            </h2>
+            <p className="text-xl text-gray-600">
+              Structured approach, proven results
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Card className="text-center group hover:shadow-xl transition-all duration-300">
+              <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                <span className="text-2xl">🎯</span>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Clear Milestones</h3>
+              <p className="text-gray-600">Every phase has defined deliverables and success criteria</p>
+            </Card>
+
+            <Card className="text-center group hover:shadow-xl transition-all duration-300">
+              <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-amber-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                <span className="text-2xl">🤝</span>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Collaborative Approach</h3>
+              <p className="text-gray-600">Your input and vision guide every decision throughout the process</p>
+            </Card>
+
+            <Card className="text-center group hover:shadow-xl transition-all duration-300">
+              <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                <span className="text-2xl">✨</span>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Quality Assurance</h3>
+              <p className="text-gray-600">Rigorous quality checks at every stage ensure exceptional results</p>
+            </Card>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-emerald-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+      <section className="py-20 bg-gray-900 text-white relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Ready to Start Your Project?
           </h2>
-          <p className="text-xl text-gray-600 mb-8">
-            Let's discuss how we can bring your vision to life with expert project management and sustainable design practices.
+          <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto">
+            Let's discuss how our comprehensive project management approach can bring your architectural vision to life with sustainability and excellence at every step.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link href="/contact">
-              <Button variant="primary" size="lg">
-                Start Your Project
+              <Button variant="primary" size="lg" className="group">
+                <span>Start Your Project</span>
+                <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
               </Button>
             </Link>
+            
             <Link href="/contact">
-              <Button variant="secondary" size="lg">
+              <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-gray-900">
                 Book a Discovery Call
               </Button>
             </Link>
+          </div>
+
+          {/* Trust Indicators */}
+          <div className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto">
+            <div className="text-center">
+              <div className="text-2xl font-bold text-emerald-400 mb-2">200+</div>
+              <div className="text-sm text-gray-400">Projects Delivered</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-emerald-400 mb-2">98%</div>
+              <div className="text-sm text-gray-400">On-Time Completion</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-emerald-400 mb-2">15+</div>
+              <div className="text-sm text-gray-400">Years Experience</div>
+            </div>
           </div>
         </div>
       </section>

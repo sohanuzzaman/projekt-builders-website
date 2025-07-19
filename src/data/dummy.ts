@@ -36,7 +36,7 @@ export const featuredImages = [
     category: "Sustainable Build"
   },
   {
-    url: "https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    url: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     alt: "Architectural detail and craftsmanship",
     category: "Craftsmanship"
   }
