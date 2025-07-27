@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import Container from './Container';
 import { CoreValue } from '@/lib/types';
 
 interface CoreValuesCarouselProps {
@@ -11,56 +10,55 @@ interface CoreValuesCarouselProps {
 export default function CoreValuesCarousel({ values }: CoreValuesCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const icons: { [key: string]: string } = {
-    home: '🏠',
-    leaf: '🌿',
-    users: '👥',
-    eye: '👁️',
-    handshake: '🤝'
-  };
-
   return (
-    <section className="py-16 md:py-24 bg-gray-50">
-      <Container>
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-4">
+    <section className="section-padding bg-gray-light">
+      <div className="container-minimal">
+        <div className="text-center mb-20">
+          <h2 className="text-3xl md:text-4xl font-light mb-6 tracking-tight">
             Our Core Values
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base text-gray max-w-2xl mx-auto font-light leading-relaxed">
             Five principles that guide every project we undertake
           </p>
         </div>
 
         {/* Desktop Grid */}
-        <div className="hidden md:grid grid-cols-5 gap-6">
+        <div className="hidden md:grid grid-cols-5 gap-8">
           {values.map((value, index) => (
             <div 
               key={value.id}
-              className="text-center p-6 bg-white rounded-sm hover:shadow-sm transition-shadow cursor-pointer"
-              onClick={() => setActiveIndex(index)}
+              className="text-center"
             >
-              <div className="text-3xl mb-4">{icons[value.icon]}</div>
-              <h3 className="font-semibold mb-2 text-sm">{value.title}</h3>
-              <p className="text-xs text-gray-600 leading-relaxed">{value.description}</p>
+              <div className="w-12 h-12 border border-gray mx-auto mb-6 flex items-center justify-center">
+                <span className="text-lg font-light text-black">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+              </div>
+              <h3 className="font-medium mb-4 text-xs uppercase tracking-wider text-black">{value.title}</h3>
+              <p className="text-xs text-gray font-light leading-relaxed">{value.description}</p>
             </div>
           ))}
         </div>
 
         {/* Mobile Carousel */}
         <div className="md:hidden">
-          <div className="bg-white p-8 rounded-sm text-center">
-            <div className="text-4xl mb-4">{icons[values[activeIndex].icon]}</div>
-            <h3 className="text-xl font-semibold mb-4">{values[activeIndex].title}</h3>
-            <p className="text-gray-600 leading-relaxed">{values[activeIndex].description}</p>
+          <div className="text-center p-8">
+            <div className="w-16 h-16 border border-gray mx-auto mb-8 flex items-center justify-center">
+              <span className="text-xl font-light text-black">
+                {String(activeIndex + 1).padStart(2, '0')}
+              </span>
+            </div>
+            <h3 className="text-lg font-medium mb-6 uppercase tracking-wider text-black">{values[activeIndex].title}</h3>
+            <p className="text-gray font-light leading-relaxed">{values[activeIndex].description}</p>
           </div>
 
           {/* Navigation Dots */}
-          <div className="flex justify-center mt-6 space-x-2">
+          <div className="flex justify-center mt-8 space-x-3">
             {values.map((_, index) => (
               <button
                 key={index}
-                className={`w-2 h-2 rounded-full transition-colors ${
-                  index === activeIndex ? 'bg-black' : 'bg-gray-300'
+                className={`w-2 h-2 transition-colors duration-300 ${
+                  index === activeIndex ? 'bg-black' : 'bg-gray-light'
                 }`}
                 onClick={() => setActiveIndex(index)}
                 aria-label={`Go to slide ${index + 1}`}
@@ -68,7 +66,7 @@ export default function CoreValuesCarousel({ values }: CoreValuesCarouselProps) 
             ))}
           </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }
