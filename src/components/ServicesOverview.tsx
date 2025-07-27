@@ -34,11 +34,11 @@ export default function ServicesOverview() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
           {services.map((service, index) => (
-            <div key={index} className="text-center">
-              <div className="text-4xl font-light text-black mb-6">
+            <div key={index} className="text-center group cursor-pointer">
+              <div className="text-4xl font-light text-black mb-6 transition-all duration-300 group-hover:text-gray-medium group-hover:scale-110">
                 {service.number}
               </div>
-              <h3 className="text-lg font-medium mb-4 tracking-wide uppercase text-black">
+              <h3 className="text-lg font-medium mb-4 tracking-wide uppercase text-black transition-colors duration-200 group-hover:text-gray-medium">
                 {service.title}
               </h3>
               <p className="text-gray font-light leading-relaxed text-sm">
@@ -51,7 +51,7 @@ export default function ServicesOverview() {
         <div className="text-center mt-16">
           <Link 
             href="/services"
-            className="inline-block border border-black text-black px-8 py-3 text-sm font-medium uppercase tracking-wider hover:bg-black hover:text-white transition-colors"
+            className="btn-minimal"
           >
             View All Services
           </Link>

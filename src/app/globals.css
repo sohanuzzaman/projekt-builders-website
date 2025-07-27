@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --black: #2c2c2c;
-  --white: #fefefe;
+  --black: #000000;
+  --white: #ffffff;
   --warm-white: #faf9f7;
   --gray-light: #f5f4f2;
-  --gray-medium: #8a8a8a;
-  --gray-dark: #4a4a4a;
+  --gray-medium: #666666;
+  --gray-dark: #333333;
   --accent: #e8d5c4;
   --accent-warm: #f2e6d9;
   --accent-deep: #d4c4b0;
@@ -83,51 +83,91 @@ h4 { font-size: 1.125rem; font-weight: 500; }
 .border-sage { border-color: var(--sage); }
 .border-clay { border-color: var(--clay); }
 
-/* Minimalist button styles */
+/* Minimalist button styles with high contrast and micro-interactions */
 .btn-minimal {
   padding: 0.75rem 2rem;
   border: 1px solid var(--black);
-  background: transparent;
+  background: var(--white);
   color: var(--black);
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.02em;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   cursor: pointer;
   text-decoration: none;
   display: inline-block;
   font-size: 0.875rem;
   text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-minimal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--black);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.btn-minimal:hover::before {
+  left: 0;
 }
 
 .btn-minimal:hover {
-  background: var(--black);
   color: var(--white);
-  font-weight: 500;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .btn-minimal-accent {
   border-color: var(--black);
+  background: var(--white);
   color: var(--black);
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-minimal-accent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--black);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.btn-minimal-accent:hover::before {
+  left: 0;
 }
 
 .btn-minimal-accent:hover {
-  background: var(--black);
   color: var(--white);
-  font-weight: 500;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .btn-primary {
   background: var(--black);
   color: var(--white);
   border: 1px solid var(--black);
-  font-weight: 500;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
   background: var(--gray-dark);
   border-color: var(--gray-dark);
   color: var(--white);
-  font-weight: 500;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 /* Container */
@@ -139,6 +179,25 @@ h4 { font-size: 1.125rem; font-weight: 500; }
 
 @media (max-width: 768px) {
   .container-minimal {
+    padding: 0 1.5rem;
+  }
+}
+
+/* Page header container with extra top spacing for desktop */
+.container-page-header {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+@media (min-width: 768px) {
+  .container-page-header {
+    padding-top: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container-page-header {
     padding: 0 1.5rem;
   }
 }
@@ -157,15 +216,49 @@ h4 { font-size: 1.125rem; font-weight: 500; }
 .text-small { font-size: 0.875rem; line-height: 1.5; }
 .text-xs { font-size: 0.75rem; line-height: 1.4; }
 
-/* Minimal card */
+/* Minimal card with micro-interactions */
 .card-minimal {
   background: var(--white);
   padding: 2rem;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
 }
 
 .card-minimal:hover {
   background: var(--gray-light);
+  transform: translateY(-2px);
+  border-color: var(--gray-light);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Subtle hover effects for images */
+.image-hover {
+  transition: all 0.4s ease;
+}
+
+.image-hover:hover {
+  transform: scale(1.02);
+}
+
+/* Link hover effects */
+.link-minimal {
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.link-minimal::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+
+.link-minimal:hover::after {
+  width: 100%;
 }
 
 /* Dividers */
@@ -182,6 +275,80 @@ h4 { font-size: 1.125rem; font-weight: 500; }
   height: 1px;
   background: var(--gray-light);
   margin: 4rem 0;
+}
+
+/* Staggered animations for core values */
+.core-value-item:nth-child(1) { animation-delay: 0.1s; }
+.core-value-item:nth-child(2) { animation-delay: 0.2s; }
+.core-value-item:nth-child(3) { animation-delay: 0.3s; }
+.core-value-item:nth-child(4) { animation-delay: 0.4s; }
+.core-value-item:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Geometric element animations */
+.geometric-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.geometric-pulse {
+  animation: pulse-subtle 4s ease-in-out infinite;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+/* Core values hover effect fix */
+.core-value-number {
+  color: var(--black);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.group:hover .core-value-number {
+  color: var(--white) !important;
+  font-weight: 600;
+}
+
+.core-value-circle {
+  border: 1px solid var(--gray-medium);
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.group:hover .core-value-circle {
+  border-color: var(--black);
+  background: var(--black);
+}
+
+/* Specific styles for about page core principles */
+.core-principles .core-value-circle {
+  border-color: var(--gray-light);
+}
+
+.core-principles .group:hover .core-value-circle {
+  border-color: var(--black);
+  background: var(--black);
 }
 
 /* Focus states */

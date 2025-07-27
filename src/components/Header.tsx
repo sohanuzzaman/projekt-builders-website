@@ -3,9 +3,11 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   const navigation = [
     { name: 'About', href: '/about' },
@@ -15,10 +17,12 @@ export default function Header() {
     { name: 'Contact', href: '/contact' }
   ];
 
+  const isActive = (href: string) => pathname === href;
+
   return (
-    <header className="fixed top-0 left-0 right-0 bg-warm-white/95 backdrop-blur-sm z-50 border-b border-accent/20">
+    <header className="fixed top-0 left-0 right-0 bg-white/98 backdrop-blur-md z-50 border-b border-gray-light">
       <div className="container-minimal">
-        <div className="flex items-center justify-between py-8">
+        <div className="flex items-center justify-between py-6">
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
@@ -31,44 +35,57 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-16">
+          <nav className="hidden md:flex items-center space-x-12">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm font-light text-black hover:text-sage transition-all duration-300 tracking-wider uppercase relative group"
+                className={`text-sm font-medium transition-all duration-200 tracking-wide uppercase link-minimal relative ${
+                  isActive(item.href) 
+                    ? 'text-black font-semibold' 
+                    : 'text-black hover:text-gray-medium'
+                }`}
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-sage transition-all duration-300 group-hover:w-full"></span>
+                {isActive(item.href) && (
+                  <span className="absolute -bottom-1 left-0 w-full h-px bg-black"></span>
+                )}
               </Link>
             ))}
           </nav>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-3 rounded-full hover:bg-accent-warm transition-colors"
+            className="md:hidden p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
-            <div className="w-5 h-5 flex flex-col justify-center items-center">
-              <span className={`block w-5 h-px bg-sage transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-0' : 'mb-1'}`} />
-              <span className={`block w-5 h-px bg-sage transition-all duration-300 ${isMenuOpen ? 'opacity-0' : 'mb-1'}`} />
-              <span className={`block w-5 h-px bg-sage transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-0' : ''}`} />
+            <div className="w-6 h-6 flex flex-col justify-center items-center">
+              <span className={`block w-6 h-px bg-black transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-0' : 'mb-1'}`} />
+              <span className={`block w-6 h-px bg-black transition-all duration-300 ${isMenuOpen ? 'opacity-0' : 'mb-1'}`} />
+              <span className={`block w-6 h-px bg-black transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-0' : ''}`} />
             </div>
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="md:hidden py-8 border-t border-accent/20 bg-white/50 backdrop-blur-sm rounded-b-lg">
+          <nav className="md:hidden py-6 border-t border-gray-light bg-white">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="block py-4 text-sm font-light text-black hover:text-sage transition-colors uppercase tracking-wider hover:bg-accent-warm/30 px-4 rounded-lg mx-2"
+                className={`block py-3 text-sm font-medium transition-colors uppercase tracking-wide ${
+                  isActive(item.href)
+                    ? 'text-black font-semibold bg-gray-light/50'
+                    : 'text-black hover:text-gray-medium'
+                }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
+                {isActive(item.href) && (
+                  <span className="block w-8 h-px bg-black mt-1"></span>
+                )}
               </Link>
             ))}
           </nav>

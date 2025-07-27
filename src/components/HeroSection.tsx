@@ -36,10 +36,7 @@ export default function HeroSection({ content }: HeroSectionProps) {
           )}
 
           {content.cta && (
-            <Link
-              href={content.cta.href || "#"}
-              className="inline-block bg-white text-black px-8 py-3 text-sm font-medium uppercase tracking-wider hover:bg-gray-100 transition-colors"
-            >
+            <Link href={content.cta.href || "#"} className="btn-minimal">
               {content.cta.text}
             </Link>
           )}

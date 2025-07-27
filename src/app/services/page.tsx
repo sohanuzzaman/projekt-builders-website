@@ -11,7 +11,7 @@ export default function ServicesPage() {
     <>
       {/* Hero Section */}
       <section className="section-padding bg-white pt-48">
-        <div className="container-minimal">
+        <div className="container-page-header">
           <div className="text-center mb-20">
             <h1 className="text-5xl md:text-7xl font-extralight mb-8 tracking-tight">
               Services

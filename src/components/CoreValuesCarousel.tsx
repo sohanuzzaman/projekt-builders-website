@@ -23,19 +23,19 @@ export default function CoreValuesCarousel({ values }: CoreValuesCarouselProps) 
         </div>
 
         {/* Desktop Grid */}
-        <div className="hidden md:grid grid-cols-5 gap-8">
+        <div className="hidden md:grid grid-cols-5 gap-6">
           {values.map((value, index) => (
             <div 
               key={value.id}
-              className="text-center"
+              className="text-center group cursor-pointer"
             >
-              <div className="w-12 h-12 border border-gray mx-auto mb-6 flex items-center justify-center">
-                <span className="text-lg font-light text-black">
+              <div className="w-14 h-14 core-value-circle mx-auto mb-6 flex items-center justify-center">
+                <span className="text-lg core-value-number">
                   {String(index + 1).padStart(2, '0')}
                 </span>
               </div>
-              <h3 className="font-medium mb-4 text-xs uppercase tracking-wider text-black">{value.title}</h3>
-              <p className="text-xs text-gray font-light leading-relaxed">{value.description}</p>
+              <h3 className="font-medium mb-4 text-xs uppercase tracking-wider text-black min-h-[2.5rem] flex items-center justify-center">{value.title}</h3>
+              <p className="text-xs text-gray font-light leading-relaxed min-h-[4rem]">{value.description}</p>
             </div>
           ))}
         </div>

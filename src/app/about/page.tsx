@@ -7,7 +7,7 @@ export default function AboutPage() {
     <>
       {/* Hero Section */}
       <section className="section-padding bg-white pt-48">
-        <div className="container-minimal">
+        <div className="container-page-header">
           <div className="text-center mb-20">
             <h1 className="text-5xl md:text-7xl font-extralight mb-8 tracking-tight">
               About Us
@@ -60,15 +60,32 @@ export default function AboutPage() {
       <section className="section-padding bg-white">
         <div className="container-minimal">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <div className="relative">
-              <div className="aspect-[3/4] relative overflow-hidden">
+            <div className="relative group">
+              {/* Animated geometric elements */}
+              <div className="absolute -top-6 -left-6 w-24 h-24 border border-black/20 transition-all duration-500 group-hover:border-black/40 group-hover:rotate-45"></div>
+              <div className="absolute -bottom-8 -right-8 w-20 h-20 bg-gray-light transition-all duration-700 group-hover:bg-black/10 group-hover:scale-110"></div>
+              <div className="absolute top-1/3 -left-10 w-2 h-32 bg-black/30 hidden lg:block transition-all duration-300 group-hover:bg-black group-hover:h-40"></div>
+              <div className="absolute bottom-1/4 -right-6 w-1 h-16 bg-gray-medium hidden lg:block transition-all duration-500 group-hover:bg-black group-hover:h-20"></div>
+              
+              <div className="aspect-[3/4] relative overflow-hidden z-10 transition-all duration-500 group-hover:shadow-2xl">
                 <Image
                   src={georgina.image.src}
                   alt={georgina.image.alt}
                   fill
-                  className="object-cover grayscale"
+                  className="object-cover grayscale image-hover transition-all duration-700 group-hover:grayscale-0"
                 />
+                
+                {/* Subtle overlay with gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
+              
+              {/* Animated experience badge */}
+              <div className="absolute -bottom-12 left-6 bg-white px-6 py-3 shadow-lg border border-gray-light z-20 transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-2">
+                <p className="text-sm font-medium text-black uppercase tracking-wider">Principal Project Manager</p>
+                <p className="text-xs text-gray-medium mt-1">15+ Years Experience</p>
+              </div>
+              
+
             </div>
             <div>
               <h2 className="text-4xl md:text-5xl font-light mb-6 tracking-tight">
@@ -94,7 +111,7 @@ export default function AboutPage() {
       </section>
 
       {/* Core Values */}
-      <section className="section-padding bg-gray-light">
+      <section className="section-padding bg-gray-light core-principles">
         <div className="container-minimal">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-light mb-6 tracking-tight">
@@ -107,16 +124,16 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             {coreValues.map((value, index) => (
-              <div key={value.id} className="text-center">
-                <div className="w-16 h-16 border border-gray-light mx-auto mb-6 flex items-center justify-center">
-                  <span className="text-2xl font-extralight text-black">
+              <div key={value.id} className="text-center group cursor-pointer">
+                <div className="w-16 h-16 core-value-circle mx-auto mb-6 flex items-center justify-center">
+                  <span className="text-2xl core-value-number">
                     {String(index + 1).padStart(2, '0')}
                   </span>
                 </div>
-                <h3 className="text-xl font-light mb-4 uppercase tracking-wide">
+                <h3 className="text-xl font-light mb-4 uppercase tracking-wide min-h-[3rem] flex items-center justify-center">
                   {value.title}
                 </h3>
-                <p className="text-gray font-light leading-relaxed">
+                <p className="text-gray font-light leading-relaxed min-h-[5rem]">
                   {value.description}
                 </p>
               </div>
