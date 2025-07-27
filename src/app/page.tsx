@@ -1,19 +1,16 @@
-import { Layout } from '@/components/layout/Layout';
-import { HeroSection } from '@/components/home/HeroSection';
-import { ServicesOverview } from '@/components/home/ServicesOverview';
-import { ProjectGallery } from '@/components/home/ProjectGallery';
-import { CoreValuesCarousel } from '@/components/home/CoreValuesCarousel';
-import { AboutPreview } from '@/components/home/AboutPreview';
-import { heroData, servicesData, coreValuesData, georginaProfile } from '@/data/dummy';
+import HeroSection from '@/components/HeroSection';
+import ServicesOverview from '@/components/ServicesOverview';
+import CoreValuesCarousel from '@/components/CoreValuesCarousel';
+import AboutPreview from '@/components/AboutPreview';
+import { heroContent, coreValues } from '@/data/content';
 
 export default function Home() {
   return (
-    <Layout>
-      <HeroSection data={heroData} />
-      <ServicesOverview services={servicesData} />
-      <ProjectGallery />
-      <CoreValuesCarousel values={coreValuesData} />
-      <AboutPreview profile={georginaProfile} />
-    </Layout>
+    <>
+      <HeroSection content={heroContent} />
+      <ServicesOverview />
+      <CoreValuesCarousel values={coreValues} />
+      <AboutPreview />
+    </>
   );
 }
