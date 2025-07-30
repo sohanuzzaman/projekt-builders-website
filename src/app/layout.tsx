@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Josefin_Sans, Montserrat } from "next/font/google";
+import { Josefin_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -10,11 +10,7 @@ const josefinSans = Josefin_Sans({
   weight: ["300", "400", "600", "700"],
 });
 
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  variable: "--font-montserrat",
-  weight: ["300", "400", "500", "600", "700"],
-});
+
 
 export const metadata: Metadata = {
   title: "Projekt Builders - Architectural Project Management",
@@ -28,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${josefinSans.variable} ${montserrat.variable} font-sans antialiased`}>
+      <body className={`${josefinSans.variable} font-sans antialiased`}>
         <Header />
         <main>
           {children}

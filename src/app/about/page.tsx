@@ -6,13 +6,13 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="section-padding bg-white pt-48">
-        <div className="container-page-header">
+      <section className="page-section-first pb-20 md:pb-32 bg-coastal-background">
+        <div className="max-w-7xl mx-auto px-8 md:px-16">
           <div className="text-center mb-20">
-            <h1 className="text-5xl md:text-7xl font-extralight mb-8 tracking-tight">
+            <h1 className="text-5xl md:text-7xl font-light mb-8 tracking-[0.15em] uppercase text-coastal-text">
               About Us
             </h1>
-            <p className="text-large text-gray max-w-3xl mx-auto font-light leading-relaxed">
+            <p className="text-lg text-coastal-text max-w-3xl mx-auto font-light leading-relaxed tracking-wide">
               At the heart of our practice is a commitment to creating spaces that serve real life, 
               prioritizing functionality, sustainability, and timeless design.
             </p>
@@ -21,23 +21,23 @@ export default function AboutPage() {
       </section>
 
       {/* Philosophy Section */}
-      <section className="section-padding bg-gray-light">
-        <div className="container-minimal">
+      <section className="py-20 md:py-32 bg-coastal-lightgrey">
+        <div className="max-w-7xl mx-auto px-8 md:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div>
-              <h2 className="text-4xl md:text-5xl font-light mb-8 tracking-tight">
+              <h2 className="text-4xl md:text-5xl font-light mb-8 tracking-[0.15em] uppercase text-coastal-text">
                 Our Philosophy
               </h2>
-              <p className="text-large text-gray mb-8 font-light leading-relaxed">
+              <p className="text-lg text-coastal-text mb-8 font-light leading-relaxed tracking-wide">
                 At the heart of our practice is a belief that architecture should serve life, not the other way around. 
                 Every space we help create is designed with the understanding that buildings shape how we live, work, and connect.
               </p>
-              <p className="text-gray mb-8 font-light leading-relaxed">
+              <p className="text-coastal-text mb-8 font-light leading-relaxed tracking-wide">
                 We champion sustainable building practices not as a trend, but as a responsibility to future generations. 
                 Our approach integrates environmental consciousness with aesthetic excellence, proving that responsible design 
                 can be both beautiful and functional.
               </p>
-              <p className="text-gray font-light leading-relaxed">
+              <p className="text-coastal-text font-light leading-relaxed tracking-wide">
                 Through meticulous project management and collaborative partnerships, we ensure that every detail serves 
                 the greater vision while maintaining the highest standards of craftsmanship and integrity.
               </p>
@@ -57,8 +57,8 @@ export default function AboutPage() {
       </section>
 
       {/* Georgina Profile */}
-      <section className="section-padding bg-white">
-        <div className="container-minimal">
+      <section className="py-20 md:py-32 bg-coastal-background">
+        <div className="max-w-7xl mx-auto px-8 md:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div className="relative group">
               {/* Animated geometric elements */}
@@ -88,20 +88,20 @@ export default function AboutPage() {
 
             </div>
             <div>
-              <h2 className="text-4xl md:text-5xl font-light mb-6 tracking-tight">
+              <h2 className="text-4xl md:text-5xl font-light mb-6 tracking-[0.15em] uppercase text-coastal-text">
                 {georgina.name}
               </h2>
-              <p className="text-large text-accent-dark mb-8 font-light uppercase tracking-wide">
+              <p className="text-lg text-coastal-gold mb-8 font-light uppercase tracking-wide">
                 {georgina.title}
               </p>
-              <p className="text-large text-gray mb-8 font-light leading-relaxed">
+              <p className="text-lg text-coastal-text mb-8 font-light leading-relaxed tracking-wide">
                 {georgina.bio}
               </p>
               <div className="space-y-3">
                 {georgina.qualifications.map((qualification, index) => (
                   <div key={index} className="flex items-center">
-                    <div className="w-2 h-2 bg-accent-dark mr-4"></div>
-                    <span className="text-gray font-light">{qualification}</span>
+                    <div className="w-2 h-2 bg-coastal-gold mr-4"></div>
+                    <span className="text-coastal-text font-light">{qualification}</span>
                   </div>
                 ))}
               </div>
@@ -111,29 +111,29 @@ export default function AboutPage() {
       </section>
 
       {/* Core Values */}
-      <section className="section-padding bg-gray-light core-principles">
-        <div className="container-minimal">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-light mb-6 tracking-tight">
+      <section className="py-20 md:py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-8 md:px-16">
+          <div className="text-center mb-24">
+            <h2 className="text-4xl md:text-5xl font-light mb-8 tracking-[0.15em] uppercase text-coastal-text">
               Our Core Principles
             </h2>
-            <p className="text-large text-gray max-w-2xl mx-auto font-light">
+            <p className="text-lg text-coastal-text max-w-3xl mx-auto font-light leading-relaxed tracking-wide">
               Five fundamental beliefs that guide every decision and shape every project
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
             {coreValues.map((value, index) => (
-              <div key={value.id} className="text-center group cursor-pointer">
-                <div className="w-16 h-16 core-value-circle mx-auto mb-6 flex items-center justify-center">
-                  <span className="text-2xl core-value-number">
+              <div key={value.id} className="text-center group cursor-pointer px-4">
+                <div className="w-16 h-16 coastal-core-value-circle mx-auto mb-8 flex items-center justify-center">
+                  <span className="text-xl coastal-core-value-number">
                     {String(index + 1).padStart(2, '0')}
                   </span>
                 </div>
-                <h3 className="text-xl font-light mb-4 uppercase tracking-wide min-h-[3rem] flex items-center justify-center">
+                <h3 className="text-lg font-normal mb-6 uppercase tracking-[0.1em] text-coastal-text min-h-[3rem] flex items-center justify-center leading-tight">
                   {value.title}
                 </h3>
-                <p className="text-gray font-light leading-relaxed min-h-[5rem]">
+                <p className="text-coastal-text font-light leading-relaxed min-h-[5rem] tracking-wide">
                   {value.description}
                 </p>
               </div>

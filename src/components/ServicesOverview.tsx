@@ -21,37 +21,37 @@ const services = [
 
 export default function ServicesOverview() {
   return (
-    <section className="section-padding bg-white">
-      <div className="container-minimal">
-        <div className="text-center mb-20">
-          <h2 className="text-3xl md:text-4xl font-light mb-6 tracking-tight">
+    <section className="pt-24 pb-16 md:pt-40 md:pb-24 bg-coastal-background">
+      <div className="max-w-6xl mx-auto px-8 md:px-16">
+        <div className="text-center mb-24">
+          <h2 className="text-4xl md:text-5xl font-light mb-8 tracking-[0.15em] uppercase text-coastal-text">
             How We Help
           </h2>
-          <p className="text-base text-gray max-w-2xl mx-auto font-light leading-relaxed">
+          <p className="text-lg text-coastal-text max-w-3xl mx-auto font-light leading-relaxed tracking-wide">
             Three core areas of expertise that ensure your architectural project succeeds
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-20">
           {services.map((service, index) => (
-            <div key={index} className="text-center group cursor-pointer">
-              <div className="text-4xl font-light text-black mb-6 transition-all duration-300 group-hover:text-gray-medium group-hover:scale-110">
+            <div key={index} className="text-center group cursor-pointer px-4">
+              <div className="text-6xl font-light text-coastal-text mb-8 transition-all duration-500 group-hover:text-coastal-gold group-hover:scale-105">
                 {service.number}
               </div>
-              <h3 className="text-lg font-medium mb-4 tracking-wide uppercase text-black transition-colors duration-200 group-hover:text-gray-medium">
+              <h3 className="text-xl font-normal mb-6 tracking-[0.1em] uppercase text-coastal-text transition-colors duration-300 group-hover:text-coastal-taupe">
                 {service.title}
               </h3>
-              <p className="text-gray font-light leading-relaxed text-sm">
+              <p className="text-coastal-text font-light text-base leading-relaxed tracking-wide">
                 {service.description}
               </p>
             </div>
           ))}
         </div>
 
-        <div className="text-center mt-16">
+        <div className="text-center mt-20">
           <Link 
             href="/services"
-            className="btn-minimal"
+            className="inline-block px-12 py-4 border-2 border-coastal-text text-coastal-text uppercase tracking-[0.15em] text-base font-normal hover:bg-coastal-gold hover:border-coastal-gold hover:text-coastal-text transition-all duration-300"
           >
             View All Services
           </Link>

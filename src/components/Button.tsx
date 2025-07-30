@@ -1,5 +1,4 @@
 import React from 'react';
-import { CTA } from '@/lib/types';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost';

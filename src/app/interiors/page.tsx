@@ -7,18 +7,18 @@ export default function InteriorsPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="section-padding bg-white pt-48">
-        <div className="container-page-header">
+      <section className="page-section-first pb-20 md:pb-32 bg-coastal-background">
+        <div className="max-w-7xl mx-auto px-8 md:px-16">
           <div className="text-center mb-20">
-            <h1 className="text-5xl md:text-7xl font-extralight mb-8 tracking-tight">
+            <h1 className="text-5xl md:text-7xl font-light mb-8 tracking-[0.15em] uppercase text-coastal-text">
               Interiors Collection
             </h1>
-            <div className="inline-block px-6 py-2 border border-accent-dark mb-8">
-              <span className="text-sm font-light uppercase tracking-wide text-accent-dark">
+            <div className="inline-block px-6 py-2 border border-coastal-gold mb-8">
+              <span className="text-sm font-light uppercase tracking-[0.1em] text-coastal-gold">
                 Coming Soon
               </span>
             </div>
-            <p className="text-large text-gray max-w-3xl mx-auto font-light leading-relaxed">
+            <p className="text-lg text-coastal-text max-w-3xl mx-auto font-light leading-relaxed tracking-wide">
               Thoughtfully curated interior pieces that embody our commitment to sustainable design, 
               functionality, and timeless aesthetics.
             </p>
@@ -27,22 +27,22 @@ export default function InteriorsPage() {
       </section>
 
       {/* Philosophy Section */}
-      <section className="section-padding bg-gray-light">
-        <div className="container-minimal">
+      <section className="py-20 md:py-32 bg-coastal-lightgrey">
+        <div className="max-w-7xl mx-auto px-8 md:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div>
-              <h2 className="text-4xl md:text-5xl font-light mb-8 tracking-tight">
+              <h2 className="text-4xl md:text-5xl font-light mb-8 tracking-[0.15em] uppercase text-coastal-text">
                 Design Philosophy
               </h2>
-              <p className="text-large text-gray mb-8 font-light leading-relaxed">
+              <p className="text-lg text-coastal-text mb-8 font-light leading-relaxed tracking-wide">
                 Our interiors collection reflects the same principles that guide our architectural projects: 
                 sustainability, functionality, and enduring beauty.
               </p>
-              <p className="text-gray mb-8 font-light leading-relaxed">
+              <p className="text-coastal-text mb-8 font-light leading-relaxed tracking-wide">
                 Each piece is carefully selected or designed to enhance daily life while minimizing environmental impact. 
                 We believe that beautiful interiors should tell a story of conscious living and thoughtful design.
               </p>
-              <p className="text-gray font-light leading-relaxed">
+              <p className="text-coastal-text font-light leading-relaxed tracking-wide">
                 From organic textiles to handcrafted ceramics, every item in our collection represents 
                 a commitment to quality, sustainability, and timeless style.
               </p>
@@ -62,13 +62,13 @@ export default function InteriorsPage() {
       </section>
 
       {/* Product Categories */}
-      <section className="section-padding bg-white">
-        <div className="container-minimal">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-light mb-6 tracking-tight">
+      <section className="py-20 md:py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-8 md:px-16">
+          <div className="text-center mb-24">
+            <h2 className="text-4xl md:text-5xl font-light mb-8 tracking-[0.15em] uppercase text-coastal-text">
               Product Categories
             </h2>
-            <p className="text-large text-gray max-w-2xl mx-auto font-light">
+            <p className="text-lg text-coastal-text max-w-3xl mx-auto font-light leading-relaxed tracking-wide">
               Eight carefully curated categories of interior pieces, each designed to enhance your living space
             </p>
           </div>
@@ -86,13 +86,13 @@ export default function InteriorsPage() {
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-500"></div>
                 </div>
                 <div className="text-center">
-                  <span className="text-xs font-light text-accent-dark mb-2 block uppercase tracking-wide">
+                  <span className="text-xs font-light text-coastal-gold mb-2 block uppercase tracking-wide">
                     {String(index + 1).padStart(2, '0')}
                   </span>
-                  <h3 className="text-lg font-light mb-3 uppercase tracking-wide">
+                  <h3 className="text-lg font-light mb-3 uppercase tracking-wide text-coastal-text">
                     {category.name}
                   </h3>
-                  <p className="text-sm text-gray font-light leading-relaxed">
+                  <p className="text-sm text-coastal-text font-light leading-relaxed tracking-wide">
                     {category.description}
                   </p>
                 </div>
@@ -103,18 +103,18 @@ export default function InteriorsPage() {
       </section>
 
       {/* Waitlist Section */}
-      <section className="section-padding bg-gray-light">
-        <div className="container-minimal text-center">
-          <h2 className="text-4xl md:text-5xl font-light mb-8 tracking-tight">
+      <section className="py-20 md:py-32 bg-coastal-lightgrey">
+        <div className="max-w-7xl mx-auto px-8 md:px-16 text-center">
+          <h2 className="text-4xl md:text-5xl font-light mb-8 tracking-[0.15em] uppercase text-coastal-text">
             Join Our Waitlist
           </h2>
-          <p className="text-large text-gray mb-12 max-w-2xl mx-auto font-light">
+          <p className="text-lg text-coastal-text mb-12 max-w-3xl mx-auto font-light leading-relaxed tracking-wide">
             Be the first to know when our interiors collection launches. 
             Get exclusive access to new pieces and special previews.
           </p>
           <Link 
             href="/contact?subject=interiors" 
-            className="btn-minimal-accent uppercase tracking-wide text-sm"
+            className="inline-block px-12 py-4 border-2 border-coastal-text text-coastal-text uppercase tracking-[0.15em] text-base font-normal hover:bg-coastal-gold hover:border-coastal-gold hover:text-coastal-text transition-all duration-300"
           >
             Join Waitlist
           </Link>

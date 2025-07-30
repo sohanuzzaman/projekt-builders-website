@@ -1,17 +1,22 @@
 @import "tailwindcss";
 
+/* Import Sifonn Basic Outline font */
+@font-face {
+  font-family: 'Sifonn Basic Outline';
+  src: url('/fonts/sifonn-basic-outline.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --black: #000000;
-  --white: #ffffff;
-  --warm-white: #faf9f7;
-  --gray-light: #f5f4f2;
-  --gray-medium: #666666;
-  --gray-dark: #333333;
-  --accent: #e8d5c4;
-  --accent-warm: #f2e6d9;
-  --accent-deep: #d4c4b0;
-  --sage: #a8b5a0;
-  --clay: #c9a96e;
+  --background: #F5F5EF;
+  --primary-text: #1F2839;
+  --accent-gold: #B69D74;
+  --accent-taupe: #C8BDB1;
+  --accent-light-grey: #E6E6E0;
+  --button-outline: #1F2839;
+  --placeholder-text: #999999;
 }
 
 * {
@@ -19,214 +24,382 @@
 }
 
 body {
-  font-family: var(--font-montserrat), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--primary-text);
+  background-color: var(--background);
+  font-family: var(--font-josefin), 'Josefin Sans', sans-serif;
   line-height: 1.7;
-  color: var(--black);
-  background-color: var(--warm-white);
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1.3;
-  letter-spacing: -0.02em;
-  color: var(--black);
-  margin-bottom: 1.5rem;
-  font-family: var(--font-josefin), sans-serif;
+/* Layout improvements */
+main {
+  min-height: 100vh;
 }
 
-h1 { 
-  font-size: 2rem; 
-  font-weight: 700; 
-  letter-spacing: -0.03em;
-}
-h2 { 
-  font-size: 1.5rem; 
-  font-weight: 400; 
-}
-h3 { font-size: 1.5rem; font-weight: 400; }
-h4 { font-size: 1.125rem; font-weight: 500; }
-
-@media (max-width: 768px) {
-  h1 { font-size: 1.75rem; }
-  h2 { font-size: 1.25rem; }
-  h3 { font-size: 1.125rem; }
+/* Home page - hero section takes full screen */
+.hero-section {
+  padding-top: 0;
 }
 
-/* Minimalist utilities */
-.text-black { color: var(--black); }
-.text-white { color: var(--white); }
-.text-gray { color: var(--gray-medium); }
-.text-gray-light { color: var(--gray-light); }
-.text-gray-dark { color: var(--gray-dark); }
-.text-sage { color: var(--sage); }
-.text-clay { color: var(--clay); }
-
-.bg-black { background-color: var(--black); }
-.bg-white { background-color: var(--white); }
-.bg-warm-white { background-color: var(--warm-white); }
-.bg-gray-light { background-color: var(--gray-light); }
-.bg-accent { background-color: var(--accent); }
-.bg-accent-warm { background-color: var(--accent-warm); }
-.bg-accent-deep { background-color: var(--accent-deep); }
-.bg-sage { background-color: var(--sage); }
-.bg-clay { background-color: var(--clay); }
-
-.border-black { border-color: var(--black); }
-.border-white { border-color: var(--white); }
-.border-gray { border-color: var(--gray-medium); }
-.border-gray-light { border-color: var(--gray-light); }
-.border-accent { border-color: var(--accent); }
-.border-sage { border-color: var(--sage); }
-.border-clay { border-color: var(--clay); }
-
-/* Minimalist button styles with high contrast and micro-interactions */
-.btn-minimal {
-  padding: 0.75rem 2rem;
-  border: 1px solid var(--black);
-  background: var(--white);
-  color: var(--black);
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  position: relative;
-  overflow: hidden;
+/* Ensure sections after hero have proper spacing from fixed header */
+.hero-section + section {
+  padding-top: 2rem;
 }
 
-.btn-minimal::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: var(--black);
-  transition: left 0.3s ease;
-  z-index: -1;
-}
-
-.btn-minimal:hover::before {
-  left: 0;
-}
-
-.btn-minimal:hover {
-  color: var(--white);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.btn-minimal-accent {
-  border-color: var(--black);
-  background: var(--white);
-  color: var(--black);
-  font-weight: 600;
-  position: relative;
-  overflow: hidden;
-}
-
-.btn-minimal-accent::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: var(--black);
-  transition: left 0.3s ease;
-  z-index: -1;
-}
-
-.btn-minimal-accent:hover::before {
-  left: 0;
-}
-
-.btn-minimal-accent:hover {
-  color: var(--white);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.btn-primary {
-  background: var(--black);
-  color: var(--white);
-  border: 1px solid var(--black);
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-  background: var(--gray-dark);
-  border-color: var(--gray-dark);
-  color: var(--white);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-}
-
-/* Container */
-.container-minimal {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-@media (max-width: 768px) {
-  .container-minimal {
-    padding: 0 1.5rem;
+@media (min-width: 768px) {
+  .hero-section + section {
+    padding-top: 3rem;
   }
 }
 
-/* Page header container with extra top spacing for desktop */
-.container-page-header {
-  max-width: 1200px;
+/* Page sections need top padding to account for fixed header */
+.page-section-first {
+  padding-top: 8rem;
+}
+
+@media (min-width: 768px) {
+  .page-section-first {
+    padding-top: 10rem;
+  }
+}
+
+/* Base heading styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-josefin), 'Josefin Sans', sans-serif;
+  color: var(--primary-text);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  line-height: 1.3;
+  font-weight: 300;
+}
+
+/* Improved section spacing */
+section {
+  position: relative;
+}
+
+/* Better container styles */
+.coastal-container {
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
 @media (min-width: 768px) {
-  .container-page-header {
-    padding-top: 2rem;
+  .coastal-container {
+    padding: 0 4rem;
   }
 }
 
-@media (max-width: 768px) {
-  .container-page-header {
-    padding: 0 1.5rem;
+/* Improved section spacing consistency */
+.section-spacing {
+  padding-top: 5rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .section-spacing {
+    padding-top: 8rem;
+    padding-bottom: 6rem;
   }
 }
 
-/* Spacing system */
-.section-padding { padding: 5rem 0; }
-.section-padding-sm { padding: 3rem 0; }
-
-@media (max-width: 768px) {
-  .section-padding { padding: 3rem 0; }
-  .section-padding-sm { padding: 2rem 0; }
+/* Fix mobile spacing issues */
+@media (max-width: 767px) {
+  .hero-section + section {
+    padding-top: 1.5rem;
+  }
+  
+  section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .max-w-7xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 
-/* Typography */
-.text-large { font-size: 1.25rem; line-height: 1.6; }
-.text-small { font-size: 0.875rem; line-height: 1.5; }
-.text-xs { font-size: 0.75rem; line-height: 1.4; }
-
-/* Minimal card with micro-interactions */
-.card-minimal {
-  background: var(--white);
-  padding: 2rem;
+/* Smooth transitions for all interactive elements */
+a, button {
   transition: all 0.3s ease;
-  border: 1px solid transparent;
 }
 
-.card-minimal:hover {
-  background: var(--gray-light);
-  transform: translateY(-2px);
-  border-color: var(--gray-light);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+/* Responsive typography improvements */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+    line-height: 1.3;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+}
+
+/* Better button styling */
+button, .btn {
+  cursor: pointer;
+  border-radius: 0;
+  font-family: var(--font-josefin), 'Josefin Sans', sans-serif;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Enhanced link styling */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Better image handling */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Refined section transitions */
+section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Better text selection */
+::selection {
+  background-color: var(--accent-gold);
+  color: var(--primary-text);
+}
+
+/* Logo styling with Sifonn Basic Outline font */
+.logo-text {
+  font-family: 'Sifonn Basic Outline', var(--font-josefin), 'Josefin Sans', sans-serif;
+  font-weight: normal;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  color: var(--primary-text);
+}
+
+.logo-text:hover {
+  color: var(--accent-gold);
+}
+
+/* Enhanced hero text readability */
+.hero-text {
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.5),
+    0 4px 8px rgba(0, 0, 0, 0.3),
+    0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.hero-subtext {
+  text-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Hero section specific improvements */
+.hero-section {
+  position: relative;
+  background: linear-gradient(135deg, #f5f5ef 0%, #e6e6e0 100%);
+}
+
+/* Improved image scaling with better performance */
+.hero-section img {
+  transition: transform 25s ease-out;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0) scale(1.05);
+}
+
+.hero-section:hover img {
+  transform: translateZ(0) scale(1.08);
+}
+
+/* Prevent layout shift during image load */
+.hero-section {
+  contain: layout style paint;
+}
+
+/* Optimize animations for better performance */
+.animate-fade-in-up,
+.animate-fade-in-scale,
+.animate-slide-in-left {
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+}
+
+/* Remove will-change after animation completes */
+.animate-fade-in-up.animation-complete,
+.animate-fade-in-scale.animation-complete,
+.animate-slide-in-left.animation-complete {
+  will-change: auto;
+}
+
+/* Enhanced button hover effects for hero */
+.hero-section button:hover,
+.hero-section a:hover button {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive typography improvements for hero */
+@media (max-width: 640px) {
+  .hero-text {
+    font-size: 2.5rem;
+    line-height: 0.95;
+    letter-spacing: 0.08em;
+  }
+  
+  .hero-subtext {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .hero-text {
+    font-size: 3.5rem;
+    line-height: 0.9;
+  }
+  
+  .hero-subtext {
+    font-size: 1.125rem;
+    line-height: 1.5;
+  }
+}
+
+/* Enhanced hero section animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 1s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInFromLeft 0.8s ease-out forwards;
+}
+
+/* Ensure proper text rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Improve button consistency */
+button, .btn, a[class*="btn"] {
+  display: inline-block;
+  text-decoration: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+/* Fix select dropdown styling */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem center;
+  background-size: 1em;
+  padding-right: 2.5rem;
+}
+
+/* Hero section enhancements */
+.hero-section {
+  position: relative;
+  background: linear-gradient(135deg, #f5f5ef 0%, #e6e6e0 100%);
+}
+
+/* Smooth image scaling animation */
+.hero-section img {
+  transition: transform 20s ease-out;
+}
+
+.hero-section:hover img {
+  transform: scale(1.02);
+}
+
+/* Coastal design system utilities */
+@layer utilities {
+  .text-coastal-text { color: var(--primary-text); }
+  .text-coastal-gold { color: var(--accent-gold); }
+  .text-coastal-taupe { color: var(--accent-taupe); }
+  .text-coastal-lightgrey { color: var(--accent-light-grey); }
+  .text-coastal-placeholder { color: var(--placeholder-text); }
+
+  .bg-coastal-background { background-color: var(--background); }
+  .bg-coastal-text { background-color: var(--primary-text); }
+  .bg-coastal-gold { background-color: var(--accent-gold); }
+  .bg-coastal-taupe { background-color: var(--accent-taupe); }
+  .bg-coastal-lightgrey { background-color: var(--accent-light-grey); }
+
+  .border-coastal-text { border-color: var(--primary-text); }
+  .border-coastal-gold { border-color: var(--accent-gold); }
+  .border-coastal-taupe { border-color: var(--accent-taupe); }
+  .border-coastal-lightgrey { border-color: var(--accent-light-grey); }
 }
 
 /* Subtle hover effects for images */
@@ -259,21 +432,7 @@ h4 { font-size: 1.125rem; font-weight: 500; }
   width: 100%;
 }
 
-/* Dividers */
-.divider {
-  height: 1px;
-  background: var(--gray-light);
-  border: none;
-  margin: 3rem 0;
-}
 
-/* Simple divider */
-.section-divider {
-  width: 100%;
-  height: 1px;
-  background: var(--gray-light);
-  margin: 4rem 0;
-}
 
 /* Staggered animations for core values */
 .core-value-item:nth-child(1) { animation-delay: 0.1s; }
@@ -316,41 +475,118 @@ h4 { font-size: 1.125rem; font-weight: 500; }
   50% { opacity: 0.6; }
 }
 
-/* Core values hover effect fix */
-.core-value-number {
-  color: var(--black);
-  font-weight: 500;
-  transition: all 0.3s ease;
+/* Coastal component styles */
+.coastal-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--accent-light-grey);
+  padding: 0.75rem 0;
+  color: var(--primary-text);
+  font-size: 1rem;
 }
 
-.group:hover .core-value-number {
-  color: var(--white) !important;
-  font-weight: 600;
+.coastal-input::placeholder {
+  color: var(--placeholder-text);
 }
 
-.core-value-circle {
-  border: 1px solid var(--gray-medium);
+.coastal-input:focus {
+  outline: none;
+  border-bottom-color: var(--accent-gold);
+}
+
+.coastal-core-value-circle {
+  border: 1px solid var(--accent-light-grey);
   background: transparent;
   transition: all 0.3s ease;
 }
 
-.group:hover .core-value-circle {
-  border-color: var(--black);
-  background: var(--black);
+.group:hover .coastal-core-value-circle {
+  border-color: var(--accent-gold);
+  background-color: var(--accent-gold);
 }
 
-/* Specific styles for about page core principles */
-.core-principles .core-value-circle {
-  border-color: var(--gray-light);
+.coastal-core-value-number {
+  color: var(--primary-text);
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
-.core-principles .group:hover .core-value-circle {
-  border-color: var(--black);
-  background: var(--black);
+.group:hover .coastal-core-value-number {
+  color: white;
+  font-weight: 600;
 }
 
-/* Focus states */
+/* Focus states with coastal colors */
 *:focus {
-  outline: 2px solid var(--black);
+  outline: 2px solid var(--accent-gold);
   outline-offset: 2px;
+}
+
+/* Header improvements */
+.header-backdrop {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Mobile menu animations */
+.mobile-menu-enter {
+  transform: translateX(100%);
+}
+
+.mobile-menu-enter-active {
+  transform: translateX(0);
+  transition: transform 300ms ease-in-out;
+}
+
+.mobile-menu-exit {
+  transform: translateX(0);
+}
+
+.mobile-menu-exit-active {
+  transform: translateX(100%);
+  transition: transform 300ms ease-in-out;
+}
+
+/* Improved hamburger animation */
+.hamburger-line {
+  transform-origin: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Better mobile menu styling */
+.mobile-nav-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.mobile-nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(182, 157, 116, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.mobile-nav-link:hover::before {
+  left: 100%;
+}
+
+/* Responsive navigation improvements */
+@media (max-width: 767px) {
+  .desktop-nav {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-menu-button {
+    display: none !important;
+  }
+  
+  .mobile-menu-overlay {
+    display: none !important;
+  }
 }
