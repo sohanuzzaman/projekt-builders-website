@@ -814,3 +814,62 @@ select:focus-visible {
 .text-minimal-2xl { font-size: 1.5rem; line-height: 1.6; }
 .text-minimal-3xl { font-size: 1.875rem; line-height: 1.5; }
 .text-minimal-4xl { font-size: 2.25rem; line-height: 1.4; }
+
+/* Mobile-specific improvements */
+@media (max-width: 1023px) {
+  /* Improve touch targets on mobile */
+  button, .button, a[role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Better scrolling for horizontal navigation */
+  .overflow-x-auto {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+  }
+  
+  .overflow-x-auto::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Touch-friendly phase navigation */
+  .phase-navigation-mobile {
+    scroll-snap-type: x mandatory;
+  }
+  
+  .phase-navigation-mobile > * {
+    scroll-snap-align: start;
+  }
+
+  /* Smooth transitions for mobile interactions */
+  .mobile-phase-transition {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Improve text readability on mobile */
+  p, li {
+    line-height: 1.6;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Remove hover effects on touch devices */
+  .hover\:scale-105:hover {
+    transform: none;
+  }
+  
+  /* Improve button feedback on touch */
+  button:active, .button:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+  
+  /* Better focus indicators for touch navigation */
+  button:focus-visible, a:focus-visible {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 2px;
+  }
+}
