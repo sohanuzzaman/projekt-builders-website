@@ -773,6 +773,17 @@ select:focus-visible {
   }
 }
 
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 /* Enhanced minimalist grid */
 .minimal-grid {
   display: grid;
