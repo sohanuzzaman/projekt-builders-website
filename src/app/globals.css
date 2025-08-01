@@ -738,3 +738,68 @@ select:focus-visible {
     display: none !important;
   }
 }
+
+/* Minimalist aesthetic enhancements */
+.minimal-section {
+  padding: 8rem 0;
+}
+
+.minimal-spacing {
+  margin-bottom: 3rem;
+}
+
+.minimal-text {
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  line-height: 1.6;
+}
+
+.minimal-title {
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.minimal-fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced minimalist grid */
+.minimal-grid {
+  display: grid;
+  gap: 3rem;
+}
+
+@media (min-width: 768px) {
+  .minimal-grid {
+    gap: 4rem;
+  }
+}
+
+/* Subtle hover effects for minimalist design */
+.minimal-hover {
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.minimal-hover:hover {
+  transform: translateY(-2px);
+}
+
+/* Refined typography scale for minimalist approach */
+.text-minimal-xs { font-size: 0.75rem; line-height: 1.5; }
+.text-minimal-sm { font-size: 0.875rem; line-height: 1.6; }
+.text-minimal-base { font-size: 1rem; line-height: 1.7; }
+.text-minimal-lg { font-size: 1.125rem; line-height: 1.7; }
+.text-minimal-xl { font-size: 1.25rem; line-height: 1.7; }
+.text-minimal-2xl { font-size: 1.5rem; line-height: 1.6; }
+.text-minimal-3xl { font-size: 1.875rem; line-height: 1.5; }
+.text-minimal-4xl { font-size: 2.25rem; line-height: 1.4; }

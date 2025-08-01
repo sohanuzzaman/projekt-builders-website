@@ -38,15 +38,15 @@ export default function CTASection({
   };
 
   const buttonClasses = {
-    light: 'border-coastal-text text-coastal-text hover:bg-coastal-gold hover:border-coastal-gold hover:text-coastal-text',
-    dark: 'border-white text-white hover:bg-coastal-gold hover:border-coastal-gold hover:text-coastal-text',
-    white: 'border-coastal-text text-coastal-text hover:bg-coastal-gold hover:border-coastal-gold hover:text-coastal-text'
+    light: 'border-coastal-text text-coastal-text hover:bg-coastal-text hover:border-coastal-text hover:text-white',
+    dark: 'border-white text-white hover:bg-white hover:border-white hover:text-coastal-text',
+    white: 'border-coastal-text text-coastal-text hover:bg-coastal-text hover:border-coastal-text hover:text-white'
   };
 
   const secondaryButtonClasses = {
-    light: 'text-coastal-text/80 hover:text-coastal-text border-coastal-text/30 hover:border-coastal-text/60',
-    dark: 'text-white/80 hover:text-white border-white/30 hover:border-white/60',
-    white: 'text-coastal-text/80 hover:text-coastal-text border-coastal-text/30 hover:border-coastal-text/60'
+    light: 'text-coastal-text/90 hover:text-coastal-text border-coastal-text/50 hover:border-coastal-text',
+    dark: 'text-white/90 hover:text-white border-white/50 hover:border-white',
+    white: 'text-coastal-text/90 hover:text-coastal-text border-coastal-text/50 hover:border-coastal-text'
   };
 
   return (
