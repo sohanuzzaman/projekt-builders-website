@@ -11,6 +11,7 @@ export default function Header() {
   const navigation = [
     { name: 'About', href: '/about' },
     { name: 'Services', href: '/services' },
+    { name: 'Portfolio', href: '/portfolio' },
     { name: 'Interiors', href: '/interiors' },
     { name: 'Retreats', href: '/retreats' },
     { name: 'Contact', href: '/contact' }
@@ -54,7 +55,7 @@ export default function Header() {
             </Link>
 
             {/* Desktop Navigation - Only visible on desktop */}
-            <nav className="hidden md:flex items-center space-x-8 xl:space-x-12">
+            <nav className="hidden lg:flex items-center space-x-8 xl:space-x-12">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
@@ -73,9 +74,9 @@ export default function Header() {
               ))}
             </nav>
 
-            {/* Mobile Menu Button - Only visible on mobile */}
+            {/* Mobile Menu Button - Only visible on mobile/tablet */}
             <button
-              className="md:hidden relative z-50 p-3 -mr-3 focus:outline-none focus:ring-2 focus:ring-coastal-gold focus:ring-offset-2 focus:ring-offset-coastal-background rounded-md"
+              className="lg:hidden relative z-50 p-3 -mr-3 focus:outline-none focus:ring-2 focus:ring-coastal-gold focus:ring-offset-2 focus:ring-offset-coastal-background rounded-md"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={isMenuOpen}
@@ -107,13 +108,13 @@ export default function Header() {
         <>
           {/* Backdrop */}
           <div 
-            className="fixed inset-0 bg-black/50 z-40 md:hidden"
+            className="fixed inset-0 bg-black/50 z-40 lg:hidden"
             onClick={handleOverlayClick}
             aria-hidden="true"
           />
           
           {/* Mobile Menu */}
-          <nav className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-coastal-background z-40 md:hidden transform transition-transform duration-300 ease-in-out shadow-2xl">
+          <nav className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-coastal-background z-40 lg:hidden transform transition-transform duration-300 ease-in-out shadow-2xl">
             <div className="flex flex-col h-full">
               {/* Menu Header */}
               <div className="flex items-center justify-between p-6 border-b border-coastal-lightgrey">

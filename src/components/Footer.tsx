@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 
@@ -8,7 +10,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Company Info */}
           <div>
-            <h3 className="text-xl font-light mb-6 tracking-wide">Projekt Builders</h3>
+            <h3 className="text-2xl md:text-3xl logo-text mb-6 tracking-[0.15em] uppercase font-light !text-white">
+              PROJEKT
+            </h3>
             <p className="text-white/70 font-light leading-relaxed text-sm">
               Architectural project management focused on sustainable, functional spaces.
             </p>
@@ -23,6 +27,9 @@ export default function Footer() {
               </Link>
               <Link href="/services" className="block text-sm text-white/70 hover:text-white transition-colors font-light">
                 Services
+              </Link>
+              <Link href="/portfolio" className="block text-sm text-white/70 hover:text-white transition-colors font-light">
+                Portfolio
               </Link>
               <Link href="/interiors" className="block text-sm text-white/70 hover:text-white transition-colors font-light">
                 Interiors
@@ -53,7 +60,22 @@ export default function Footer() {
               <div className="pt-4">
                 <Link 
                   href="/contact" 
-                  className="inline-block bg-white text-black px-6 py-2 text-xs font-medium uppercase tracking-wider hover:bg-gray-200 transition-colors"
+                  className="inline-block px-6 py-3 text-xs font-medium uppercase tracking-wider transition-all duration-300"
+                  style={{
+                    backgroundColor: '#B69D74',
+                    color: '#000000',
+                    border: '2px solid #B69D74',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = '#ffffff';
+                    e.currentTarget.style.color = '#000000';
+                    e.currentTarget.style.border = '2px solid #ffffff';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = '#B69D74';
+                    e.currentTarget.style.color = '#000000';
+                    e.currentTarget.style.border = '2px solid #B69D74';
+                  }}
                 >
                   Book a Call
                 </Link>
