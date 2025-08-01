@@ -152,11 +152,11 @@ export default function Header() {
               {/* Contact CTA in Mobile Menu */}
               <div className="p-6 border-t border-coastal-lightgrey">
                 <Link
-                  href="/contact"
+                  href="/portfolio"
                   className="block w-full text-center px-6 py-3 border-2 border-coastal-text text-coastal-text uppercase tracking-[0.1em] text-sm font-normal hover:bg-coastal-gold hover:border-coastal-gold hover:text-coastal-text transition-all duration-300"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Start Your Project
+                  View Portfolio
                 </Link>
               </div>
             </div>

@@ -26,77 +26,49 @@ export default function HeroSection({ content }: HeroSectionProps) {
           placeholder="blur"
           blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
         />
-        {/* Improved overlay for better text readability and accessibility */}
-        <div className="absolute inset-0 bg-gradient-to-br from-coastal-text/45 via-coastal-text/65 to-coastal-text/55" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/15 to-transparent" />
-        {/* Additional overlay for WCAG AA contrast compliance */}
-        <div className="absolute inset-0 bg-black/25" />
+        {/* Minimal overlay for subtle depth while preserving image clarity */}
+        <div className="absolute inset-0 bg-white/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-coastal-background/20 via-transparent to-transparent" />
       </div>
 
-      {/* Enhanced geometric accents with better positioning */}
-      <div className="absolute top-1/3 right-1/3 w-px h-24 bg-white/15 rotate-45 hidden xl:block animate-pulse"></div>
-      <div className="absolute bottom-1/4 left-1/4 w-16 h-px bg-white/15 hidden xl:block animate-pulse" style={{ animationDelay: "1s" }}></div>
-      <div className="absolute top-1/2 right-1/5 w-2 h-2 bg-white/20 rounded-full hidden xl:block animate-pulse" style={{ animationDelay: "2s" }}></div>
+      {/* Minimal geometric accents */}
+      <div className="absolute top-1/4 right-1/4 w-px h-16 bg-coastal-text/15 rotate-45 hidden xl:block"></div>
+      <div className="absolute bottom-1/3 left-1/3 w-1 h-1 bg-coastal-gold/30 rounded-full hidden xl:block"></div>
 
       {/* Main Content Container */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
-          {/* Improved headline hierarchy and typography */}
-          <div className="mb-8 md:mb-12">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white font-light tracking-[0.12em] uppercase leading-[0.9] md:leading-[0.85] hero-text animate-fade-in-up">
-              <span className="block mb-2 md:mb-4">Spaces Built</span>
-              <span className="block mb-4 md:mb-6">with Purpose.</span>
+          {/* Minimalist headline */}
+          <div className="mb-12 md:mb-16">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-coastal-text font-light tracking-[0.15em] uppercase leading-[0.9] hero-text-minimal animate-fade-in-up">
+              <span className="block">Spaces Built</span>
+              <span className="block">with Purpose</span>
             </h1>
-            <div 
-              className="opacity-0 animate-fade-in-up"
-              style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}
-            >
-              <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white/95 font-light tracking-[0.15em] uppercase">
-                Designed for Real Life.
-              </p>
-            </div>
           </div>
 
-          {/* Enhanced subheadline with better spacing */}
-          {content.subheadline && (
-            <div
-              className="opacity-0 animate-fade-in-up mb-12 md:mb-16"
-              style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
-            >
-              <p className="text-lg md:text-xl lg:text-2xl text-white/90 max-w-3xl mx-auto font-light normal-case tracking-wide leading-relaxed hero-subtext">
-                {content.subheadline}
-              </p>
-            </div>
-          )}
-
-          {/* Enhanced CTA section with multiple actions */}
+          {/* Minimal CTA */}
           {content.cta && (
             <div
-              className="opacity-0 animate-fade-in-up flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center"
-              style={{ animationDelay: "0.6s", animationFillMode: "forwards" }}
+              className="opacity-0 animate-fade-in-up"
+              style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
             >
               <Link href={content.cta.href || "#"}>
                 <Button
                   variant="outline"
                   size="lg"
-                  className="group border-2 border-white/90 text-white hover:bg-white hover:text-coastal-text px-12 py-4 text-base font-medium tracking-[0.15em] uppercase backdrop-blur-sm bg-white/10 hover:border-white transition-all duration-300 hover:scale-105 hover:shadow-xl min-w-[200px]"
+                  className="group border border-coastal-text text-coastal-text hover:bg-coastal-text hover:text-white px-8 py-3 text-sm font-light tracking-[0.2em] uppercase bg-transparent transition-all duration-500 hover:scale-105"
                 >
-                  <span className="relative z-10">{content.cta.text}</span>
+                  {content.cta.text}
                 </Button>
-              </Link>
-              <Link href="/about">
-                <button className="text-white/80 hover:text-white text-base font-light tracking-[0.1em] uppercase border-b border-white/30 hover:border-white/60 pb-1 transition-all duration-300">
-                  Learn More
-                </button>
               </Link>
             </div>
           )}
         </div>
       </div>
 
-      {/* Enhanced scroll indicator */}
+      {/* Minimal scroll indicator */}
       <button 
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/70 animate-bounce focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-transparent rounded-lg p-2"
+        className="absolute bottom-12 left-1/2 transform -translate-x-1/2 text-coastal-text/50 focus:outline-none focus:ring-1 focus:ring-coastal-text focus:ring-offset-2 rounded p-2"
         onClick={() => {
           const nextSection = document.querySelector('.hero-section + section');
           nextSection?.scrollIntoView({ behavior: 'smooth' });
@@ -104,18 +76,10 @@ export default function HeroSection({ content }: HeroSectionProps) {
         aria-label="Scroll to next section"
       >
         <div className="flex flex-col items-center cursor-pointer group">
-          <span className="text-xs uppercase tracking-[0.2em] mb-3 font-light group-hover:text-white transition-colors">
-            Scroll
-          </span>
-          <div className="w-px h-8 bg-white/50 group-hover:bg-white/70 transition-colors"></div>
-          <div className="w-1 h-1 bg-white/50 rounded-full mt-2 group-hover:bg-white/70 transition-colors"></div>
+          <div className="w-px h-12 bg-coastal-text/30 group-hover:bg-coastal-text/50 transition-colors"></div>
+          <div className="w-1 h-1 bg-coastal-text/30 rounded-full mt-2 group-hover:bg-coastal-text/50 transition-colors"></div>
         </div>
       </button>
-
-      {/* Subtle brand element */}
-      <div className="absolute bottom-8 right-8 text-white/30 text-xs font-light tracking-[0.2em] uppercase hidden lg:block">
-        Projekt Builders
-      </div>
     </section>
   );
 }

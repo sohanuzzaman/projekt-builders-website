@@ -18,8 +18,8 @@ export const heroContent: HeroSection = {
     height: 1080,
   },
   cta: {
-    text: "Start Your Project",
-    href: "/contact",
+    text: "View Our Portfolio",
+    href: "/portfolio",
   },
 };
 

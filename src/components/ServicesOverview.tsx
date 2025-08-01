@@ -5,17 +5,20 @@ const services = [
   {
     title: "Project Management",
     description: "Comprehensive oversight from concept to completion, ensuring your vision becomes reality with precision and care.",
-    number: "01"
+    number: "01",
+    icon: "📋"
   },
   {
     title: "Design Collaboration", 
     description: "Seamless coordination between architects, designers, and contractors to maintain design excellence throughout.",
-    number: "02"
+    number: "02",
+    icon: "🤝"
   },
   {
     title: "Sustainable Advocacy",
     description: "Championing environmentally responsible practices and materials that benefit both your project and the planet.",
-    number: "03"
+    number: "03",
+    icon: "🌱"
   }
 ];
 
@@ -32,18 +35,31 @@ export default function ServicesOverview() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-20">
           {services.map((service, index) => (
-            <div key={index} className="text-center group cursor-pointer px-4">
-              <div className="text-6xl font-light text-coastal-text mb-8 transition-all duration-500 group-hover:text-coastal-gold group-hover:scale-105">
+            <div key={index} className="text-center group cursor-pointer px-4 py-8 rounded-lg transition-all duration-300 hover:bg-white hover:shadow-lg">
+              {/* Icon */}
+              <div className="text-4xl mb-6 transition-transform duration-300 group-hover:scale-110">
+                {service.icon}
+              </div>
+              
+              {/* Number */}
+              <div className="text-5xl md:text-6xl font-light text-coastal-text mb-8 transition-all duration-500 group-hover:text-coastal-gold group-hover:scale-105">
                 {service.number}
               </div>
+              
+              {/* Title */}
               <h3 className="text-xl font-normal mb-6 tracking-[0.1em] uppercase text-coastal-text transition-colors duration-300 group-hover:text-coastal-taupe">
                 {service.title}
               </h3>
+              
+              {/* Description */}
               <p className="text-coastal-text font-light text-base leading-relaxed tracking-wide">
                 {service.description}
               </p>
+              
+              {/* Animated underline */}
+              <div className="w-0 h-px bg-coastal-gold mx-auto mt-6 transition-all duration-500 group-hover:w-16"></div>
             </div>
           ))}
         </div>
