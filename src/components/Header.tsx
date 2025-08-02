@@ -47,7 +47,7 @@ export default function Header() {
               href="/" 
               className="flex items-center group relative z-50"
             >
-              <span className="text-2xl md:text-3xl font-light tracking-[0.2em] uppercase text-coastal-text transition-colors duration-300 hover:text-coastal-gold">
+              <span className="text-2xl md:text-3xl logo-text tracking-[0.2em] uppercase text-coastal-text transition-colors duration-300 hover:text-coastal-gold">
                 PROJEKT
               </span>
             </Link>
@@ -131,7 +131,7 @@ export default function Header() {
                   <Link 
                     href="/" 
                     onClick={closeMenu}
-                    className="text-xl font-light tracking-[0.2em] uppercase text-coastal-text"
+                    className="text-xl logo-text tracking-[0.2em] uppercase text-coastal-text"
                   >
                     PROJEKT
                   </Link>
